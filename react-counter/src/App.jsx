@@ -1,13 +1,17 @@
 import { useState } from "react";
+import Counter from "./Counter";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [show, setShow] = useState(true);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Счётчик: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
+    <div style={{ padding: 20 }}>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Скрыть компонент" : "Показать компонент"}
+      </button>
+      <hr />
+      {show && <Counter count={count} setCount={setCount} />}
     </div>
   );
 }
